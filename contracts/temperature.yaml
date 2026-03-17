@@ -1,0 +1,19 @@
+name: TemperatureContract
+consumer: dashboard
+provider: sensor-service
+interactions:
+  - name: GetReading
+    type: request_reply
+    request:
+      - {name: sensor_id, type: string,  example: "sensor-1"}
+    response:
+      - {name: value, type: float64, example: "22.5"}
+      - {name: unit,  type: string,  example: "celsius"}
+
+  - name: ReadingUpdate
+    type: publish
+    fields:
+      - {name: sensor_id, type: string,  example: "sensor-1"}
+      - {name: value,     type: float64, example: "22.5"}
+      - {name: unit,      type: string,  example: "celsius"}
+      - {name: timestamp, type: int,     example: "1234567890"}

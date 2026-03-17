@@ -1,0 +1,19 @@
+name: AlertsContract
+consumer: monitor
+provider: alert-service
+interactions:
+  - name: RaiseAlert
+    type: request_reply
+    request:
+      - {name: level,   type: string, example: "warn"}
+      - {name: message, type: string, example: "threshold exceeded"}
+    response:
+      - {name: id, type: string, example: "alert-1"}
+      - {name: ok, type: bool,   example: "true"}
+
+  - name: AlertFired
+    type: publish
+    fields:
+      - {name: id,      type: string, example: "alert-1"}
+      - {name: level,   type: string, example: "warn"}
+      - {name: message, type: string, example: "threshold exceeded"}
